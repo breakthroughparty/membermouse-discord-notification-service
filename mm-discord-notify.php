@@ -12,9 +12,6 @@
  * Author:            Breakthrough Contributors
  * Author URI:        https://breakthroughparty.org.uk/
  */
-require_once("../wp-load.php");
-require_once("../wp-content/plugins/membermouse/includes/mm-constants.php");
-require_once("../wp-content/plugins/membermouse/includes/init.php");
 
 define("BOT_TOKEN","{replace with your bot token}");
 function discord_send_message($options) {
