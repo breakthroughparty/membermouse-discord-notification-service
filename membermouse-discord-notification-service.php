@@ -2,12 +2,12 @@
 /**
  * Breakthrough discord notifier.
  *
- * @package mm-discord-notify
+ * @package membermouse-discord-notification-service
  *
  * @wordpress-plugin
- * Plugin Name:       Breakthrough Membermouse Discord Notifier
+ * Plugin Name:       Breakthrough Membermouse Discord Notification Service
  * Description:       Using the member added hook, sends a notification to discord when a new member joins. More notifications to be added.
- * Plugin URI:        https://github.com/BreakthroughParty
+ * Plugin URI:        https://github.com/BreakthroughParty/membermouse-discord-notification-service
  * Version:           0.1
  * Author:            Breakthrough Contributors
  * Author URI:        https://breakthroughparty.org.uk/
