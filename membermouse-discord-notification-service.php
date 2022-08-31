@@ -13,14 +13,17 @@
  * Author URI:        https://breakthroughparty.org.uk/
  */
 
-define( 'BOT_TOKEN', '{replace with your bot token}' );
+/**
+ * These are due to be replaced with a page using the WordPress Options API in
+ * due course.
+ */
+define( 'DISCORD_BOT_TOKEN',  '' );
+define( 'DISCORD_CHANNEL_ID', '' );
 
 function discord_send_message ( $options ) {
 	$msgobj = json_encode( $options, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 
-	$channelid = '{replace with channel ID to send to}';
-
-	$dAPI_SendMessage = 'https://discordapp.com/api/channels/' . $channelid . '/messages';
+	$dAPI_SendMessage = 'https://discordapp.com/api/channels/' . DISCORD_CHANNEL_ID . '/messages';
 
 	$ch = curl_init();
 
