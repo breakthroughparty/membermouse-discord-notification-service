@@ -13,37 +13,45 @@
  * Author URI:        https://breakthroughparty.org.uk/
  */
 
-define("BOT_TOKEN","{replace with your bot token}");
-function discord_send_message($options) {
-	$msgobj=json_encode($options, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
-	$channelid = "{replace with channel ID to send to}"
-	$dAPI_SendMessage = "https://discordapp.com/api/channels/{$channelid}/messages";
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_HTTPHEADER,
-		array( "Authorization: Bot " . BOT_TOKEN,
-				'Content-Type: application/json',
-				'Referer: https://discordapp.com/channels/@me'
-		));
+define( 'BOT_TOKEN', '{replace with your bot token}' );
 
-	curl_setopt_array( $ch, [
+function discord_send_message ( $options ) {
+	$msgobj = json_encode( $options, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+
+	$channelid = '{replace with channel ID to send to}';
+
+	$dAPI_SendMessage = 'https://discordapp.com/api/channels/' . $channelid . '/messages';
+
+	$ch = curl_init();
+
+	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+	curl_setopt( $ch, CURLOPT_HTTPHEADER, array(
+		'Authorization: Bot ' . BOT_TOKEN,
+		'Content-Type: application/json',
+		'Referer: https://discordapp.com/channels/@me'
+	) );
+
+	curl_setopt_array( $ch, array(
 		CURLOPT_URL => $dAPI_SendMessage,
 		CURLOPT_POST => true,
-		CURLOPT_POSTFIELDS => $msgobj]);
-
+		CURLOPT_POSTFIELDS => $msgobj
+	) );
 
 	$msgresponse = curl_exec( $ch );
+
 	curl_close( $ch );
+
 	return $msgresponse;
 }
-function memberAdded($data)  
-{
-	if ($data[membership_level] == 2) {
+
+function memberAdded ( $data ) {
+	if ( 2 == $data['membership_level'] ) {
 		$msgobj = [
-			"content" => "A new member has joined the party! 🥳",
+			'content' => 'A new member has joined the party! 🥳',
 		];
-		$m=discord_send_message($msgobj);
+
+		$m = discord_send_message( $msgobj );
 	}
 }
-add_action('mm_member_add', 'memberAdded');
-?>
+
+add_action( 'mm_member_add', 'memberAdded' );
