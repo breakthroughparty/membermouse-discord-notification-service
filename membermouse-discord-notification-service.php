@@ -17,8 +17,9 @@
  * These are due to be replaced with a page using the WordPress Options API in
  * due course.
  */
-define( 'DISCORD_BOT_TOKEN',  '' );
-define( 'DISCORD_CHANNEL_ID', '' );
+define( 'DISCORD_BOT_TOKEN',               '' );
+define( 'DISCORD_CHANNEL_ID',              '' );
+define( 'MEMBERMOUSE_MEMBERSHIP_LEVEL_ID', '' );
 
 function discord_send_message ( $options ) {
 	$msgobj = json_encode( $options, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
@@ -48,7 +49,7 @@ function discord_send_message ( $options ) {
 }
 
 function memberAdded ( $data ) {
-	if ( 2 == $data['membership_level'] ) {
+	if ( MEMBERMOUSE_MEMBERSHIP_LEVEL_ID == $data['membership_level'] ) {
 		$msgobj = [
 			'content' => 'A new member has joined the party! 🥳',
 		];
